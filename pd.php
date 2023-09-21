@@ -1,10 +1,10 @@
-<?php session_start();?>
+
 <?php include "header.php";
 
 
 if(isset($_GET['id']))
 {
-	echo $_GET['id'];
+	$_GET['id'];
 
 }
 
@@ -96,7 +96,7 @@ if(isset($_GET['id']))
 					<!-- Product details -->
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name"><?php echo $model; ?></h2>
+							<h2 class="product-name"><?php echo $model; ?></h2><br>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -106,12 +106,12 @@ if(isset($_GET['id']))
 									<i class="fa fa-star-o"></i>
 								</div>
 								<a class="review-link" href="#">10 Review(s) | Add your review</a>
-							</div>
+							</div><br>
 							<div>
 								<h3 class="product-price">&#8377;<?php echo $price; ?></h3>
 								<span class="product-available">In Stock</span>
-							</div>
-							<p><?php echo $des;?></p>
+							</div><br>
+							<p><?php echo $des;?></p><br>
 
 							<div class="add-to-cart">
 								<div class="qty-label">
@@ -122,7 +122,7 @@ if(isset($_GET['id']))
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+								<a href="cart.php"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
 							</div>
 
 						</div>
@@ -145,16 +145,7 @@ if(isset($_GET['id']))
 			<!-- /container -->
 		</div>
 		<!-- /Section -->
-<?php
-}
 
-}
-else {
-	echo "0 results";
-  }
-  
-  mysqli_close($conn);
-  ?>
 		
 <?php include "footer.php";?>
 
@@ -165,6 +156,16 @@ else {
 		<script src="js/nouislider.min.js"></script>
 		<script src="js/jquery.zoom.min.js"></script>
 		<script src="js/main.js"></script>
+		<?php
+}
+
+}
+else {
+	echo "0 results";
+  }
+  
+  mysqli_close($conn);
+  ?>
 
 	</body>
 </html>

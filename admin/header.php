@@ -1,6 +1,4 @@
-
-<?php session_start() ?>
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,14 +36,6 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-		<style>
-			#a1{
-				color: white;
-			}
-			#a1:hover {
-				color: #D10024;
-			}
-	   </style>
 
 </head>
 <body>
@@ -84,7 +74,7 @@
 						<!-- /LOGO -->
 
 						<!-- SEARCH BAR -->
-						<div class="col-md-4">
+						<div class="col-md-5">
 							<div class="header-search">
 								<form>
 									<select class="input-select">
@@ -93,7 +83,7 @@
 										<option value="1">SMARTPHONE</option>
                                         <option value="1">LED</option>
 									</select>
-									<input class="input" placeholder="Search">
+									<input class="input" placeholder="Search here">
 									<button class="search-btn">Search</button>
 								</form>
 							</div>
@@ -104,9 +94,7 @@
 							<?php if( isset($_SESSION['name']) && !empty($_SESSION['name']) )
 								{
 							?>
-
-      							<a href="logout.php"><input type="Submit" value="Sign Out" style="width:100px; height:35px; border-radius:15px; margin-top:20px; font-size:15px;"></a>
-
+      							<a href="register.php"><input type="Submit" value="Sign Out" style="width:100px; height:35px; border-radius:15px; margin-top:20px; font-size:15px;"></a>
 							<?php }
 								else	
 								{ ?>
@@ -115,9 +103,8 @@
                 				<!-- <a href="register.php"><input type="Submit" value="Sign In" style="width:100px; height:35px; border-radius:15px; margin-top:20px; font-size:15px;"></a> -->
             				</div>
 						</div>
-						<div class="col-md-2">
+						
 						<?php
-								
                 				if(isset($_SESSION["name"]))
 								{
                     				$name_login = $_SESSION["name"];
@@ -130,11 +117,12 @@
                 				}
             
 							?>
-										<br>
-										<a id="a1"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $name_login; ?> </a>
-							</div>				
+							<div class="col-md-2">
+										<li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $name_login; ?> </a></li>
+							</div>
+														
 						<!-- ACCOUNT -->
-						<div class="col-md-1">
+						<div class="col-md-2">
 							<div class="header-ctn">
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" >

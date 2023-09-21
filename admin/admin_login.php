@@ -1,9 +1,9 @@
 <?php
 
-include "header.php";
-if(isset($_SESSION['registration']))
+// include "header.php";
+if(isset($_SESSION['admin']))
 {
-    header("location:index.php");
+    header("location:dashboard.php");
 
 }?>
 
@@ -48,7 +48,7 @@ if(isset($_SESSION['registration']))
             else
             {
            // $pass=md5($pass);
-            $sql="SELECT * FROM registration WHERE email = '$email'";
+            $sql="SELECT * FROM admin WHERE email = '$email'";
             $res=mysqli_query($conn,$sql);
         if(mysqli_num_rows($res) == 1)
         {
@@ -60,7 +60,8 @@ if(isset($_SESSION['registration']))
                $_SESSION['name'] = $row['name'];
                //header("Location: index.php");
                //exit();
-               echo '<script>window.location="index.php"</script>';
+               echo '<script>window.location="dashboard.php"</script>';
+              
            
               
            }
@@ -117,6 +118,6 @@ if(isset($_SESSION['registration']))
 
    
 </body>
-<?php include "footer.php"; ?>
+
 
 </html>
