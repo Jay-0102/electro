@@ -1,16 +1,40 @@
-
 <?php include "header.php";
+$user_id = $_SESSION['id'];
 
 
-if(isset($_GET['id']))
-{
-	$_GET['id'];
 
-}
 
 ?>
 <?php 
             include "dbname.php";
+			if(isset($_POST['add_to_cart'])){
+
+				$product_name = $_POST['name'];
+				$product_price = $_POST['price'];
+				$product_image = $_POST['image'];
+				$product_quantity = $_POST['qty'];
+			 
+				$check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name' AND r_id = '$user_id'") or die('query failed');
+			 
+				if(mysqli_num_rows($check_cart_numbers) > 0){
+				   ?>
+				   <div class="alert alert-success">
+				 <strong>already aded to cart!</strong> 
+			   </div>
+				   <?php
+				}else{
+				   mysqli_query($conn, "INSERT INTO `cart`(r_id, name, price, qty, img) VALUES('$user_id', '$product_name', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
+				   ?>
+				   <div class="alert alert-success">
+				 <strong>successfully added tocart</strong> 
+				 <?php echo '<script>window.location="cart.php"</script>'; ?>
+			   </div>
+				   <?php
+				}
+			 
+			 }
+				   
+			 
             //Display all the laptop that are active
             //Sql Query
             $sql = "SELECT * FROM  phone where p_id=".$_GET['id'];
@@ -39,11 +63,12 @@ if(isset($_GET['id']))
 					 $image2 = $row['img2'];
 					 $image3 = $row['img3'];
 					 $des = $row['des'];
-				
+					 
 			
 				   
 				?> 
 <!-- SECTION -->
+<!-- <form action="" method="POST"> -->
 <div class="section">
 			<!-- container -->
 			<div class="container">
@@ -53,7 +78,7 @@ if(isset($_GET['id']))
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
-								<img src="<?php echo $image;?>" alt="">
+								<input type="hidden" name="image"><img src="<?php echo $image;?>" alt="">
 							</div>
 
 							<div class="product-preview">
@@ -96,7 +121,7 @@ if(isset($_GET['id']))
 					<!-- Product details -->
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name"><?php echo $model; ?></h2><br>
+							<input type="hidden" name="name"> <h2 class="product-name"><?php echo $model; ?></h2><br>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -108,21 +133,21 @@ if(isset($_GET['id']))
 								<a class="review-link" href="#">10 Review(s) | Add your review</a>
 							</div><br>
 							<div>
-								<h3 class="product-price">&#8377;<?php echo $price; ?></h3>
+								<input type="hidden" name="price"><h3 class="product-price">&#8377;<?php echo $price; ?></h3>
 								<span class="product-available">In Stock</span>
 							</div><br>
 							<p><?php echo $des;?></p><br>
 
 							<div class="add-to-cart">
-								<div class="qty-label">
-									Qty
+								<!-- <div class="qty-label">
+									<input type="hidden" name="qty">Qty
 									<div class="input-number">
 										<input type="number">
 										<span class="qty-up">+</span>
 										<span class="qty-down">-</span>
 									</div>
-								</div>
-								<a href="cart.php"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+								</div> -->
+								<a href="addtocart.php?id=<?php echo $_GET['id']; ?>"><button class="add-to-cart-btn" name="add_to_cart"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
 							</div>
 
 						</div>
@@ -145,7 +170,7 @@ if(isset($_GET['id']))
 			<!-- /container -->
 		</div>
 		<!-- /Section -->
-
+<!-- </form> -->
 		
 <?php include "footer.php";?>
 

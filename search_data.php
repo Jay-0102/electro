@@ -1,4 +1,14 @@
 <?php include "header.php"; ?>
+<?php
+
+$data= $_GET['search'];
+include 'dbname.php';
+$sql="select * from phone where name like '%".$data."%' or des like '%".$data."%'";
+$res=mysqli_query($conn,$sql);
+
+?>
+
+
 <!-- SECTION -->
 <div class="section">
 			<!-- container -->
@@ -13,36 +23,17 @@
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
 			
-<?php 
-            include "dbname.php";
-            //Display all the laptop that are active
-            //Sql Query
-            $sql = "SELECT p_id,name,model,price,img FROM  phone";
-		
-			//$sql="SELECT * FROM phone WHERE $id=p_id";
 
-            //Execute the Query
-            $res = mysqli_query($conn, $sql);
-			
-
-            //Count Rows
-            $count = mysqli_num_rows($res);
-             //CHeck whether categories available or not
-             if($count>0)
-             {
-                 //CAtegories Available
-                 while($row=mysqli_fetch_assoc($res))
-				 
-                 {
-
-                   // echo "  Name: " . $row["name"]. " " . $row["model"]. " " . $row["price"]. "<br>";
-                     //Get the Values
-                   
+            
+                   <?php
+                   while($row = mysqli_fetch_assoc($res))
+                   {
                      $id = $row['p_id'];
                      $name = $row['name']; 
                      $model = $row['model']; 
                      $price = $row['price'];
-                     $image = $row['img'];                 
+                     $image = $row['img'];   
+                                   
                      ?>
                       
                       
@@ -75,29 +66,22 @@
 												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i><a href="addtocart.php?id=<?php echo $id;?>">add to cart</a></button>
 											</div>
 										</div>
-
-										<!-- /product -->
-                     <?php
-                 }
-             }
-               //CAtegories Not Available
-                 else {
-                    echo "0 results";
-                  }
-                  
-                  mysqli_close($conn);
-         
-         ?>
+                                        <?php
+}
+?>
+				
 
 
 									</div>
 										<div id="slick-nav-1" class="products-slick-nav"></div>
 
 								</div>
+                                
 								<!-- /tab -->
 							</div>
 						</div>
 					</div>
+                    
 					<!-- Products tab & slick -->
 				</div>
 				<!-- /row -->
@@ -105,5 +89,10 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
+
+
+
+
+
 
 <?php include "footer.php"; ?>

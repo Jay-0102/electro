@@ -93,25 +93,25 @@ else
         <table>
         
             <div class="input-box">
-                <input type="text"  name="name" placeholder="Full Name" required>
+                <input type="text"  name="name" placeholder="Full Name" >
             </div>
             <div class="input-box">
-                <input type="text" name="email" placeholder="Email" required>
+                <input type="text" name="email" placeholder="Email" >
             </div>
             <div class="input-box">
-                <input type="number" name="phone" placeholder="Phone Number" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                <input type="number" name="phone" placeholder="Phone Number" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" >
             </div>
             <div class="input-box">
-                <input type="text" name="address" placeholder="Address Line 1" required>
+                <input type="text" name="address" placeholder="Address Line 1" >
             </div>
             <div class="input-box">
-                <input type="password" name="password" placeholder="Create password" required>
+                <input type="password" name="password" placeholder="Create password" >
             </div>
             <div class="input-box">
-                <input type="password" name="cpassword" placeholder="Confirm password" required>
+                <input type="password" name="cpassword" placeholder="Confirm password" >
             </div>
             <div class="policy">
-                <input type="checkbox" required>
+                <input type="checkbox" >
                 <h3><br>I accept all terms & condition</h3>
             </div>
             <div class="input-box button">

@@ -1,113 +1,158 @@
 <?php
-    session_start(); 
-    if(isset($_GET['id']))
-{
-	$_GET['id'];
+include "dbname.php";
 
-}
+// $user_id = $_SESSION['id'];
+
+// if(!isset($user_id)){
+//    header('location:login.php');
+// }
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-     <!-- Page Header Start -->
-     <div class="page-header mb-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2>Cart</h2>
-                    </div>
-                    <div class="col-12">
-                        <a href="">Home</a>
-                        <a href="">Cart</a>
-                    </div>
-                </div>
-            </div>
-    </div>
-    <!-- Page Header End -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="js/jquery-3.7.1.js" type="text/javascript"></script>
+<?php include 'header.php'; 
+$conn = new mysqli('localhost', 'root', '', 'electro');
+$sql = "select * from cart where r_id=" . $_SESSION['id'];
+$result = $conn->query($sql);
+if($result->num_rows>0)
+{
+$res=$result->fetch_assoc();
 
-    <div class="container">
-    <div class="row ">
-    </div>
-</div>
-      <h2>Customer Details</h2>
-        <div class="table-responsive">
-          <table class="table table-striped table-sm table-dark text-light ">
+
+
+
+?>
+
+
+
+<section class="products">
+    <div class="container mt-5">
+        <h1>Shopping Cart</h1>
+        <table class="table table-bordered">
             <thead>
-              <tr>
-                <th class="bg-dark">Id</th>
-                <th class="bg-dark">Name</th>
-                <th class="bg-dark">Email</th>
-                <th class="bg-dark">Password</th>
-                <th class="bg-dark">Mobile</th>
-                <th class="bg-dark">Address</th>
-                <th class="bg-dark"> Update</th>
-                <th class="bg-dark">Delete</th>
-              </tr>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
             </thead>
             <tbody>
-          <?php
-                $con=mysqli_connect('localhost','root','','electro');
-                $sel="select * from registration";
-                $q1=mysqli_query($con,$sel);
-                while($row=mysqli_fetch_assoc($q1))
-                {
+                <?php
+                $mobile = [];
+                $mobile = json_decode($res['mobile']);
+                $quantity=[];
+                $quantity=json_decode($res['qty']);
+                $cnt=0;
 
-          ?>
-              <tr>
-              <td><?php echo $item['id'];  ?></td>
-                <td><?php echo $row['r_id']; ?></td>
-                <td><?php echo $row['qty']; ?></td>
-                <td><?php echo $row['price']; ?></td>
-                <td><?php  echo $item['price']*$item['qty']; ?></td>
-                <!-- <td><img width="100" height="100" src="<?php //echo $item['img'] ?>"></td> -->
-                     <!-- <td><a href="removecartitem.php?remove=<?php //echo $item['id']; ?>">DELETE</td> -->
-                <!-- <td><a href="cust_edit.php"="</?php echo $row['id']; ?>">Edit</a></td> -->
-                
-              </tr>
-              <?php } ?>
-              
+                foreach ($mobile as $m) {
+
+                    $sql = "select * from phone where p_id=".$m;
+                    
+                    $row = $conn->query($sql)->fetch_assoc();
+                ?>
+                    <tr>
+                        <td><img src="<?php echo $row['img']; ?>" alt="Product 2" width="100"></td>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['des']; ?></td>
+                        <td>₹<?php echo $row['price']; ?></td>
+                        <td>
+                            
+                                <input type="number" value="<?php echo $quantity[$cnt];?>" min="1" name='qty' onchange="update(this.value,<?php echo $row['p_id'];?>)" class="form-control" style="width:80px;">
+                            
+                        </td>
+                        <td>
+                           <a href="<?php echo $_SERVER['PHP_SELF'];?>?did=<?php echo $row['p_id'];?>" name='delete' class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                <?php $cnt++; }}
+                else
+                { ?>
+
+      <section class="products">
+            <div class="container mt-5">
+        <h1>Shopping Cart</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+                </table>
+                </section>
+<?php
+}?>
             </tbody>
-          </table>
-        </div>
-      </main>
+        </table>
     </div>
-  </div>
+</section>
+
+<?php include 'footer.php'; 
+
+if (isset($_GET['did']))
+ {
+    $productIdToDelete = $_GET['did'];
+
+   
+    $sql = "select * from cart where r_id=" . $_SESSION['id'];
+    $res = $conn->query($sql);
+    $row = $res->fetch_assoc();
+    $mobile = json_decode($row['mobile']);
+    $qty = json_decode($row['qty']);
+
+    
+    $key = array_search($productIdToDelete, $mobile);
 
 
-  <!-- <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-DBjhmceckmzwrnMMrjI7BvG2FmRuxQVaTfFYHgfnrdfqMhxKt445b7j3KBQLolRl"
-    crossorigin="anonymous"></script>
+    if ($key !== false) {
+        
+        unset($mobile[$key]);
+        unset($qty[$key]);
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js"
-    integrity="sha384-EbSscX4STvYAC/DxHse8z5gEDaNiKAIGW+EpfzYTfQrgIlHywXXrM9SUIZ0BlyfF"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
-    integrity="sha384-i+dHPTzZw7YVZOx9lbH5l6lP74sLRtMtwN2XjVqjf3uAGAREAF4LMIUDTWEVs4LI"
-    crossorigin="anonymous"></script>
-  <script src="dashboard.js"></script> -->
+        
+        $mobile = array_values($mobile);
+        $qty = array_values($qty);
 
-    <table border="1">
-            <?php if(isset($_SESSION['cart'])) : ?>
-                <?php foreach($_SESSION['cart'] as $k => $item) : ?>
-            <tr>
-                     <!-- <td></td>
-                     <td><?php //echo $item['name']; ?></td> -->
-                     <td><?php echo $item['qty']; ?></td>
-                     <td><?php echo $item['price']; ?></td>
-                     <td><?php echo $item['price']*$item['qty']; ?></td>
-                      
-                     <!-- <td><img width="100" height="100" src="<?php echo $item['img'] ?>"></td>
-                     <td><a href="removecartitem.php?remove=<?php echo $item['id']; ?>">DELETE</td> -->
-            </tr>
-            <?php endforeach ?>
-            <?php endif ?>
-                
-</table>
-</body>
-</html>
+
+        $updatedMobile = json_encode($mobile);
+        $updatedQty = json_encode($qty);
+
+       
+        $query = "UPDATE cart SET mobile='$updatedMobile', qty='$updatedQty' WHERE r_id=" . $_SESSION['id'];
+        $conn->query($query);
+
+        echo "<script>window.location.href='cart.php'</script>";
+        // exit();
+    } 
+ }
+?>
+<script type="text/javascript">
+   function update(qty,id){
+      console.log(qty+' '+id);
+   $(document).ready(function(){
+      
+      $.ajax({
+         url:'cart_qty_update.php',
+         type:'GET',
+         data:{
+            'qty':qty,
+            'p_id':id
+         },
+         success:function(data){
+            console.log('success'); 
+         }
+
+
+      });
+   });
+}
+</script>
+<!-- Handle quantity update and item removal in PHP -->
+

@@ -47,7 +47,7 @@
 				<div class="container">
 					<!-- row -->
 					<div class="row">
-						<div class="col-md-3 col-xs-6">
+						<div class="col-md-4 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">About Us</h3>
 								<p>If you need any help.Please contact US...</p>
@@ -59,22 +59,22 @@
 							</div>
 						</div>
 
-						<div class="col-md-3 col-xs-6">
+						 <!-- <div class="col-md-4 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">Categories</h3>
 								<ul class="footer-links">
-									<!--<li><a href="#">Hot deals</a></li>-->
+									<li><a href="#">Hot deals</a></li>
 									<li><a href="laptop.php">Laptops</a></li>
 									<li><a href="phone.php">Smartphones</a></li>
 									<li><a href="led.php">LED</a></li>
 								
 								</ul>
 							</div>
-						</div>
+						</div>  -->
 
 						<div class="clearfix visible-xs"></div>
 
-						<div class="col-md-3 col-xs-6">
+						<div class="col-md-4 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">Information</h3>
 								<ul class="footer-links">
@@ -87,7 +87,7 @@
 							</div>
 						</div>
 
-						<div class="col-md-3 col-xs-6">
+						<div class="col-md-4 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">Service</h3>
 								<ul class="footer-links">

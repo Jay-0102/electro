@@ -86,14 +86,15 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-4">
 							<div class="header-search">
-								<form>
-									<select class="input-select">
+								<form method="GET" action="search_data.php">
+									<!-- <select class="input-select">
 										<option value="0">All Categories</option>
 										<option value="1">LAPTOP</option>
 										<option value="1">SMARTPHONE</option>
                                         <option value="1">LED</option>
-									</select>
-									<input class="input" placeholder="Search">
+									</select> -->
+									
+									<input class="input" placeholder="Search" type="text" name="search" >
 									<button class="search-btn">Search</button>
 								</form>
 							</div>
@@ -131,13 +132,13 @@
             
 							?>
 										<br>
-										<a id="a1"><span class="glyphicon glyphicon-user"></span> Welcome <?php echo $name_login; ?> </a>
+										<a id="a1"><i class="fa fa-user" aria-hidden="true"></i> Welcome <?php echo $name_login; ?> </a>
 							</div>				
 						<!-- ACCOUNT -->
 						<div class="col-md-1">
 							<div class="header-ctn">
 								<div class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" >
+									<a href="cart.php"  >
 										<i class="fa fa-shopping-cart"></i>
 										<span>Your Cart</span>
 										<div class="qty">3</div>
@@ -203,10 +204,10 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="index.php">Home</a></li>
-						<li><a href="categories.php">Categories</a></li>
-						<li><a href="lap.php">Laptops</a></li>
+						<!-- <li><a href="categories.php">Categories</a></li> -->
+						<!-- <li><a href="lap.php">Laptops</a></li> -->
 						<li><a href="phone_db.php">Smartphones</a></li>
-						<li><a href="led.php">LED</a></li>
+						<!-- <li><a href="led.php">LED</a></li> -->
 						
 						<li><div class="dropdown">
 						
