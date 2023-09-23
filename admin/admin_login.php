@@ -96,7 +96,7 @@ if(isset($_SESSION['admin']))
   <br>
     <center>
     <div class="wrapper">
-        <h2>Login</h2>
+        <h2>Admin Login</h2>
         <form action="<?php //echo $_SERVER['PHP_SELF'];?>" align="center" method="POST">
         <table>
             <div class="input-box">

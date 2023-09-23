@@ -11,6 +11,11 @@ include "dbname.php";
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="js/jquery-3.7.1.js" type="text/javascript"></script>
 <?php include 'header.php'; 
+if(!isset($_SESSION['id']))
+{
+    echo "<script>window.location.href='login.php';</script>";
+}
+
 $conn = new mysqli('localhost', 'root', '', 'electro');
 $sql = "select * from cart where r_id=" . $_SESSION['id'];
 $result = $conn->query($sql);
@@ -64,7 +69,7 @@ $res=$result->fetch_assoc();
                             
                         </td>
                         <td>
-                           <a href="<?php echo $_SERVER['PHP_SELF'];?>?did=<?php echo $row['p_id'];?>" name='delete' class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                           <a href="<?php echo $_SERVER['PHP_SELF'];?>?did=<?php echo $row['p_id'];?>" onclick="return confirm('are you sure?');" name='delete' class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                 <?php $cnt++; }}

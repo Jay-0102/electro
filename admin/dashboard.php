@@ -20,7 +20,7 @@
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">Sign out</a>
+        <a class="nav-link" href="../logout.php">Sign out</a>
       </li>
     </ul>
   </nav>
@@ -43,24 +43,24 @@
               </a>
             </li>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="laptop_view.php">
                 <span data-feather="users"></span>
                 Laptop
               </a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link" href="smartphone_view.php">
                 <span data-feather="users"></span>
               Smartphone
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="led_view.php">
                 <span data-feather="users"></span>
               Led
               </a>
-            </li>
+            </li> -->
            
             
           </ul>
@@ -92,7 +92,7 @@
                 <div class="card-statistic-3 p-4">
                   
                     <div class="mb-4">
-                        <h5 class="card-title mb-0">LAPTOP</h5>
+                        <h5 class="card-title mb-0">CUSTOMERS</h5>
                        
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
@@ -104,7 +104,7 @@
                         <div class="col-4 text-right">
                         <?php 
                         //Sql Query 
-                        $sql = "SELECT * FROM laptop";
+                        $sql = "SELECT * FROM registration";
                         //Execute Query
                         $res = mysqli_query($conn, $sql);
                         //Count Rows
@@ -152,7 +152,7 @@
                 </div>
 
                 
-        <div class="col-xl-6 col-lg-6">
+        <!-- <div class="col-xl-6 col-lg-6">
             <div class="card l-bg-blue-dark">
                 <div class="card-statistic-3 p-4">
                    
@@ -182,7 +182,7 @@
                     
                        
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>

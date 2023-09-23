@@ -6,7 +6,11 @@
     include "admin_css.php";
     
   ?>
-  
+  <style>
+    tr td{
+      font-weight:600;
+    }
+  </style>
 </head>
 
 <body>
@@ -20,7 +24,7 @@
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">Sign out</a>
+        <a class="nav-link" href="../logout.php">Sign out</a>
       </li>
     </ul>
   </nav>
@@ -44,24 +48,24 @@
               </a>
             </li>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="laptop_view.php">
                 <span data-feather="users"></span>
                 Laptop
               </a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link" href="smartphone_view.php">
                 <span data-feather="users"></span>
               Smartphone
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="led_view.php">
                 <span data-feather="users"></span>
               Led
               </a>
-            </li>
+            </li> -->
            
             
           </ul>
@@ -93,15 +97,15 @@
 </div>
       <h2>Customer Details</h2>
         <div class="table-responsive">
-          <table class="table table-striped table-sm table-dark text-light ">
+          <table class="table table-striped table-sm table-light text-dark ">
             <thead>
-              <tr>
-                <th class="bg-dark">Id</th>
-                <th class="bg-dark">Name</th>
-                <th class="bg-dark">Email</th>
-                <th class="bg-dark">Password</th>
-                <th class="bg-dark">Mobile</th>
-                <th class="bg-dark">Address</th>
+              <tr >
+                <th class="bg-dark text-light p-2">Id</th>
+                <th class="bg-dark text-light p-2">Name</th>
+                <th class="bg-dark text-light p-2">Email</th>
+                <th class="bg-dark text-light p-2">Password</th>
+                <th class="bg-dark text-light p-2">Mobile</th>
+                <th class="bg-dark text-light p-2">Address</th>
                
               </tr>
             </thead>
@@ -115,12 +119,12 @@
 
           ?>
               <tr>
-              <td><?php echo $row['r_id']; ?></td>
-                <td><?php echo $row['name']; ?></td>
-                <td><?php echo $row['email']; ?></td>
-                <td><?php echo $row['password']; ?></td>
-                <td><?php echo $row['mobileno']; ?></td>
-                <td><?php echo $row['address']; ?></td>
+              <td class="p-2"><?php echo $row['r_id']; ?></td>
+                <td class="p-2"><?php echo $row['name']; ?></td>
+                <td class="p-2"><?php echo $row['email']; ?></td>
+                <td class="p-2"><?php echo $row['password']; ?></td>
+                <td class="p-2"><?php echo $row['mobileno']; ?></td>
+                <td class="p-2"><?php echo $row['address']; ?></td>
                 <!--<td><a href="cust_edit.php"="<?php //echo $row['id']; ?>">Edit</a></td>-->
                 
               </tr>

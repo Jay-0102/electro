@@ -94,13 +94,13 @@
                                         <option value="1">LED</option>
 									</select> -->
 									
-									<input class="input" placeholder="Search" type="text" name="search" >
-									<button class="search-btn">Search</button>
+									<input class="input" placeholder="Search" type="text" name="search" style="width: 200px; border-radius:10px;">
+									<button class="btn btn-danger py-2" style="padding: 9px; background-color:#D10024;	">Search</button>
 								</form>
 							</div>
 						</div>
 						<!-- /SEARCH BAR -->
-						<div class="col-md-2">
+						<div class="col-sm-1">
 							<div class="input-box button">
 							<?php if( isset($_SESSION['name']) && !empty($_SESSION['name']) )
 								{
@@ -116,7 +116,9 @@
                 				<!-- <a href="register.php"><input type="Submit" value="Sign In" style="width:100px; height:35px; border-radius:15px; margin-top:20px; font-size:15px;"></a> -->
             				</div>
 						</div>
-						<div class="col-md-2">
+						
+						
+						<div class="col-md-2" style="padding: 10px 30px;">
 						<?php
 								
                 				if(isset($_SESSION["name"]))
@@ -135,13 +137,12 @@
 										<a id="a1"><i class="fa fa-user" aria-hidden="true"></i> Welcome <?php echo $name_login; ?> </a>
 							</div>				
 						<!-- ACCOUNT -->
-						<div class="col-md-1">
+						<div class="col-md-1" style="padding: 10px 30px;">
 							<div class="header-ctn">
 								<div class="dropdown">
 									<a href="cart.php"  >
 										<i class="fa fa-shopping-cart"></i>
-										<span>Your Cart</span>
-										<div class="qty">3</div>
+										<!-- <span>Your Cart</span> -->
 									</a>
 								</div>
 									<div class="cart-dropdown">
@@ -179,12 +180,14 @@
 									</div>
 								</div>
 								<!-- /Cart -->
-
+								
 								<!-- Menu Toogle -->
 
 								<!-- /Menu Toogle -->
 							</div>
+							<span class=" col-md-1" style="padding: 20px 10px;" ><a href="admin/admin_login.php" class="btn btn-danger rounded-pill" style="background: #de0600;border-radius:15px;">Admin</a></span>
 						</div>
+						
 						<!-- /ACCOUNT -->
 					</div>
 					<!-- row -->
